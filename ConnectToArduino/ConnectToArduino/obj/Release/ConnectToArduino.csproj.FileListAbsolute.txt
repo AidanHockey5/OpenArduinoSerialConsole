@@ -1,0 +1,9 @@
+C:\Users\Aidan\Desktop\OpenArduinoSerialConsole\ConnectToArduino\ConnectToArduino\bin\Release\ConnectToArduino.exe.config
+C:\Users\Aidan\Desktop\OpenArduinoSerialConsole\ConnectToArduino\ConnectToArduino\bin\Release\ConnectToArduino.exe
+C:\Users\Aidan\Desktop\OpenArduinoSerialConsole\ConnectToArduino\ConnectToArduino\bin\Release\ConnectToArduino.pdb
+C:\Users\Aidan\Desktop\OpenArduinoSerialConsole\ConnectToArduino\ConnectToArduino\obj\Release\ConnectToArduino.csprojResolveAssemblyReference.cache
+C:\Users\Aidan\Desktop\OpenArduinoSerialConsole\ConnectToArduino\ConnectToArduino\obj\Release\ConnectToArduino.ConnectToArduinoForm.resources
+C:\Users\Aidan\Desktop\OpenArduinoSerialConsole\ConnectToArduino\ConnectToArduino\obj\Release\ConnectToArduino.Properties.Resources.resources
+C:\Users\Aidan\Desktop\OpenArduinoSerialConsole\ConnectToArduino\ConnectToArduino\obj\Release\ConnectToArduino.csproj.GenerateResource.Cache
+C:\Users\Aidan\Desktop\OpenArduinoSerialConsole\ConnectToArduino\ConnectToArduino\obj\Release\ConnectToArduino.exe
+C:\Users\Aidan\Desktop\OpenArduinoSerialConsole\ConnectToArduino\ConnectToArduino\obj\Release\ConnectToArduino.pdb
