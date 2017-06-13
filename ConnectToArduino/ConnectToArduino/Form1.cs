@@ -19,6 +19,7 @@ namespace ConnectToArduino
         public ConnectToArduinoForm()
         {
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.FixedSingle; //Remove this if you want a resizable window
             RefreshSerialPorts();
             Application.ApplicationExit += new EventHandler(this.OnApplicationExit);
         }
@@ -59,16 +60,36 @@ namespace ConnectToArduino
                 sp.ReadTimeout = 1;
                 sp.WriteTimeout = 1;
                 sp.DataReceived += new SerialDataReceivedEventHandler(SerialDataRecieved);
+                if (sp.IsOpen)
+                    Println("Connected!");
+                else
+                    Println("Connection failed!");
             }
 
         }
 
-        void Print(string text) //Print on same line
+        delegate void SetTextCallback(string text);
+
+        private void SetText(string text) //This function is required for the serial port to place items in the output console 
+                                          //due to the serial ports being handled on another thread.
+        {
+            if (this.outputConsole.InvokeRequired)
+            {
+                SetTextCallback d = new SetTextCallback(SetText);
+                this.Invoke(d, new object[] { text });
+            }
+            else
+            {
+                this.outputConsole.AppendText(text);
+            }
+        }
+
+        void Print(string text) //Print on same line. Only use for local prints.
         {
             outputConsole.AppendText(text);
         }
 
-        void Println(string text) //Print and create a new line.
+        void Println(string text) //Print and create a new line. Only use for local prints.
         {
             outputConsole.AppendText(text + "\n");
         }
@@ -88,8 +109,9 @@ namespace ConnectToArduino
         void SerialDataRecieved(object sender, SerialDataReceivedEventArgs e) //New message on the incomming serial line!
         {
             SerialPort s = (SerialPort)sender; //Which port just talked to us?
-            string inData = sp.ReadExisting();
-            Print(inData);
+            string txt = string.Empty;
+            txt += s.ReadExisting().ToString(); //Send over text to thread-safe text function
+            SetText(txt.ToString());
         }
 
         private void Send_Click(object sender, EventArgs e)
@@ -101,11 +123,13 @@ namespace ConnectToArduino
         private void LedOn_Click(object sender, EventArgs e)
         {
             SendSerialMessage("LED_ON");
+            Println("Send LED_ON command");
         }
 
         private void LedOff_Click(object sender, EventArgs e)
         {
             SendSerialMessage("LED_OFF");
+            Println("Send LED_OFF command");
         }
 
         void SendSerialMessage(string msg)
