@@ -37,6 +37,8 @@
             this.Send = new System.Windows.Forms.Button();
             this.LedOn = new System.Windows.Forms.Button();
             this.LedOff = new System.Windows.Forms.Button();
+            this.Clear_Btn = new System.Windows.Forms.Button();
+            this.disconnect_Btn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // PortSelect
@@ -141,12 +143,34 @@
             this.LedOff.UseVisualStyleBackColor = true;
             this.LedOff.Click += new System.EventHandler(this.LedOff_Click);
             // 
+            // Clear_Btn
+            // 
+            this.Clear_Btn.Location = new System.Drawing.Point(13, 255);
+            this.Clear_Btn.Name = "Clear_Btn";
+            this.Clear_Btn.Size = new System.Drawing.Size(156, 23);
+            this.Clear_Btn.TabIndex = 9;
+            this.Clear_Btn.Text = "CLEAR";
+            this.Clear_Btn.UseVisualStyleBackColor = true;
+            this.Clear_Btn.Click += new System.EventHandler(this.Clear_Btn_Click);
+            // 
+            // disconnect_Btn
+            // 
+            this.disconnect_Btn.Location = new System.Drawing.Point(188, 255);
+            this.disconnect_Btn.Name = "disconnect_Btn";
+            this.disconnect_Btn.Size = new System.Drawing.Size(107, 23);
+            this.disconnect_Btn.TabIndex = 10;
+            this.disconnect_Btn.Text = "Disconnect";
+            this.disconnect_Btn.UseVisualStyleBackColor = true;
+            this.disconnect_Btn.Click += new System.EventHandler(this.disconnect_Btn_Click);
+            // 
             // ConnectToArduinoForm
             // 
             this.AcceptButton = this.Send;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(307, 261);
+            this.ClientSize = new System.Drawing.Size(307, 287);
+            this.Controls.Add(this.disconnect_Btn);
+            this.Controls.Add(this.Clear_Btn);
             this.Controls.Add(this.LedOff);
             this.Controls.Add(this.LedOn);
             this.Controls.Add(this.Send);
@@ -175,6 +199,8 @@
         private System.Windows.Forms.Button Send;
         private System.Windows.Forms.Button LedOn;
         private System.Windows.Forms.Button LedOff;
+        private System.Windows.Forms.Button Clear_Btn;
+        private System.Windows.Forms.Button disconnect_Btn;
     }
 }
 

@@ -54,16 +54,20 @@ namespace ConnectToArduino
             else
             {
                 Println("Connecting to: " + activePort + " at " + baudRate.ToString() + " Baud");
-                sp = new SerialPort(activePort, baudRate, Parity.None, 8, StopBits.One);
-                sp.DtrEnable = false;
-                sp.Open();
-                sp.ReadTimeout = 1;
-                sp.WriteTimeout = 1;
-                sp.DataReceived += new SerialDataReceivedEventHandler(SerialDataRecieved);
-                if (sp.IsOpen)
-                    Println("Connected!");
-                else
-                    Println("Connection failed!");
+                try
+                {
+                    sp = new SerialPort(activePort, baudRate, Parity.None, 8, StopBits.One);
+                    sp.DtrEnable = false;
+                    sp.Open();
+                    sp.ReadTimeout = 1;
+                    sp.WriteTimeout = 1;
+                    sp.DataReceived += new SerialDataReceivedEventHandler(SerialDataRecieved);
+                    if (sp.IsOpen)
+                        Println("Connected!");
+                    else
+                        Println("Connection failed!");
+                }
+                catch { Println("Connection failed!"); }
             }
 
         }
@@ -171,6 +175,20 @@ namespace ConnectToArduino
         private void ConnectToArduinoForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void Clear_Btn_Click(object sender, EventArgs e)
+        {
+            outputConsole.Clear();
+        }
+
+        private void disconnect_Btn_Click(object sender, EventArgs e)
+        {
+            if(sp != null)
+            {
+                if (sp.IsOpen)
+                    sp.Close();
+            }
         }
     }
 }
